@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALTO · Boletín de Seguridad Colombia — 2026-06-12</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =====================================================================
+       Tablero de Inteligencia — identidad ALTO (Editorial Bold), variante B
+       del sketch 001. CSS embebido: la página es autocontenida.
+       ===================================================================== */
+    :root {
+      --alto-red:  #E84244;
+      --alto-blue: #4174B9;
+      --alto-grey: #B0B6B8;
+      --ink:   #15181D;
+      --ink-2: #4A4F57;
+      --ink-3: #7C828B;
+      --paper: #F4F1EB;
+      --line:  rgba(21,24,29,.12);
+      --disp: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --body: "IBM Plex Sans", Arial, sans-serif;
+      --mono: "IBM Plex Mono", "SF Mono", monospace;
+      --ancho: 1000px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: #fff; color: var(--ink);
+      font-family: var(--body); font-size: 16px; line-height: 1.5;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3 { margin: 0; font-family: var(--disp); font-weight: 800; letter-spacing: -.01em; }
+    a { color: inherit; }
+
+    /* Banda y navegación */
+    .band { background: var(--ink); color: #fff; }
+    .band__inner {
+      max-width: var(--ancho); margin: 0 auto; padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .band__logo { background: #fff; border-radius: 4px; padding: 10px 16px; display: inline-flex; flex: 0 0 auto; }
+    .band__logo img { height: 28px; width: auto; display: block; }
+    .band__meta {
+      text-align: right; font-family: var(--mono); font-size: 10px;
+      letter-spacing: .16em; text-transform: uppercase; line-height: 1.8;
+    }
+    .band__meta b { font-weight: 600; }
+    .nav {
+      max-width: var(--ancho); margin: 0 auto; padding: 12px 40px;
+      display: flex; gap: 24px; font-family: var(--mono); font-size: 11px;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .nav a { text-decoration: none; font-weight: 600; color: var(--ink); transition: color .15s ease; }
+    .nav a:hover { color: var(--alto-red); }
+
+    /* Contenedor */
+    .panelwrap { max-width: var(--ancho); margin: 0 auto; padding: 0 40px 8px; }
+
+    /* Paneles superiores: balance + tendencias */
+    .b-top { display: grid; grid-template-columns: 1.6fr 1fr; gap: 22px; margin-top: 24px; }
+    @media (max-width: 760px) { .b-top { grid-template-columns: 1fr; } }
+    .panel { border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; background: #fff; }
+    .panel h3 {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--alto-red); font-weight: 600; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .panel h3::before { content: ""; width: 14px; height: 2px; background: var(--alto-red); }
+    .region { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 13px; }
+    .region:first-child { border-top: 0; }
+    .region .nom { font-weight: 600; min-width: 150px; font-family: var(--disp); }
+    .region .det { color: var(--ink-2); font-size: 12.5px; flex: 1; }
+
+    /* Chips de severidad / nivel */
+    .sev {
+      font-family: var(--mono); font-size: 9.5px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px;
+      display: inline-block; border-radius: 2px; white-space: nowrap;
+    }
+    .sev--critico { background: #E84244; color: #fff; }
+    .sev--alto    { background: #FBE0E0; color: #C92F31; }
+    .sev--medio   { background: #F5ECD6; color: #9A7A16; }
+    .sev--info    { background: #E6EEF7; color: #4174B9; }
+    .sev--off     { background: #ECECEC; color: #7C828B; }
+
+    /* Tendencias */
+    .trends { display: flex; flex-direction: column; gap: 6px; }
+    .trend {
+      display: flex; align-items: baseline; gap: 7px;
+      background: var(--paper); padding: 8px 12px; border-radius: 2px;
+      font-size: 12.5px; line-height: 1.35;
+    }
+    .trend b { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+    .t-up   { color: var(--alto-red); }
+    .t-down { color: var(--alto-blue); }
+    .t-flat { color: var(--ink-3); }
+
+    /* Filtros */
+    .filtros { display: flex; gap: 8px; margin: 26px 0 4px; flex-wrap: wrap; }
+    .fbtn {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 13px; border: 1px solid var(--line); background: #fff;
+      cursor: pointer; border-radius: 2px; transition: all .15s ease; font-weight: 600;
+    }
+    .fbtn:hover { border-color: var(--ink); }
+    .fbtn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    /* Incidentes */
+    .inc { border-left: 3px solid var(--line); padding: 12px 0 12px 16px; border-bottom: 1px solid var(--line); transition: background .15s ease; }
+    .inc:hover { background: #FAFAF8; }
+    .inc--critico  { border-left-color: var(--alto-red); }
+    .inc--alto     { border-left-color: #E89B44; }
+    .inc--medio    { border-left-color: var(--alto-blue); }
+    .inc--contexto { border-left-color: var(--alto-grey); }
+    .inc--off { opacity: .55; }
+    .inc__cab { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .inc__titular { font-family: var(--disp); font-size: 16.5px; font-weight: 700; line-height: 1.2; margin-top: 5px; }
+    .inc__titular a { text-decoration: none; }
+    .inc__titular a:hover { color: var(--alto-red); }
+    .inc__resumen { font-size: 13px; color: var(--ink-2); margin: 4px 0 0; line-height: 1.45; }
+    .inc__meta { margin-top: 7px; display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
+    .tagsec {
+      font-family: var(--mono); font-size: 9px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ink-2);
+      border: 1px solid var(--line); padding: 2px 7px;
+      display: inline-block; border-radius: 2px; white-space: nowrap;
+    }
+    .fuente {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--alto-blue); font-weight: 600;
+      text-decoration: none; transition: color .15s ease;
+    }
+    .fuente:hover { text-decoration: underline; }
+    .loc { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+
+    /* Descartados */
+    .descartados-toggle {
+      margin: 18px 0 0; background: none; border: none; cursor: pointer;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ink-3); font-weight: 600;
+      display: flex; align-items: center; gap: 6px; padding: 6px 0; transition: color .15s ease;
+    }
+    .descartados-toggle:hover { color: var(--alto-blue); }
+    #descartados { display: none; }
+
+    /* Recomendaciones */
+    .seccion { margin-top: 30px; border-top: 1.5px solid var(--ink); padding-top: 16px; }
+    .seclbl {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--alto-red); font-weight: 600;
+      margin: 0 0 18px; display: flex; align-items: center; gap: 10px;
+    }
+    .seclbl::before { content: ""; width: 18px; height: 2px; background: var(--alto-red); }
+    .recogrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 700px) { .recogrid { grid-template-columns: 1fr; } }
+    .reco {
+      background: #EEF3FB; border-left: 2px solid var(--alto-blue);
+      padding: 11px 14px; font-size: 13.5px; line-height: 1.5;
+    }
+    .reco b {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--alto-blue); display: block; margin-bottom: 3px;
+    }
+
+    .vacio { color: var(--ink-3); font-style: italic; font-size: 13px; }
+
+    /* Pie */
+    .pie { background: var(--ink); color: #fff; margin-top: 38px; }
+    .pie__inner {
+      max-width: var(--ancho); margin: 0 auto; padding: 16px 40px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .pie__inner .tag { color: var(--alto-grey); }
+    .pie__inner b { color: var(--alto-red); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <header class="band">
+    <div class="band__inner">
+      <span class="band__logo"><img src="https://hcuevasg.github.io/ALTOColombia/assets/alto-logo.png" alt="ALTO"></span>
+      <div class="band__meta">
+        Boletín de Seguridad · Colombia<br>
+        <b>Boletín 163 · viernes 12 de junio de 2026</b>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="https://hcuevasg.github.io/ALTOColombia/index.html">Boletín de hoy</a>
+    <a href="https://hcuevasg.github.io/ALTOColombia/archivo.html">Archivo</a>
+  </nav>
+
+  <main class="panelwrap">
+
+    <div class="b-top">
+      <div class="panel">
+        <h3>Balance regional</h3>
+        <div class="region"><span class="sev sev--critico">Crítico</span><span class="nom">Chocó</span><span class="det">Bombardeo en Nuquí con 9 bajas del Clan del Golfo; operaciones militares activas en zona rural con posible afectación a movilidad fluvial y costera.</span></div>
+<div class="region"><span class="sev sev--critico">Crítico</span><span class="nom">Antioquia (Nordeste)</span><span class="det">Masacre de campesinos en Remedios atribuida a disidencias con anuncio de más ataques; conductor secuestrado hallado muerto; alerta del gobernador por presiones electorales armadas.</span></div>
+<div class="region"><span class="sev sev--alto">Alto</span><span class="nom">Nariño</span><span class="det">Combates con disidencias en Los Andes Sotomayor dejan 6 soldados heridos y 200+ desplazados; zona con operaciones en curso.</span></div>
+<div class="region"><span class="sev sev--alto">Alto</span><span class="nom">Magdalena</span><span class="det">Presunto paro armado en Fundación activa Consejo de Seguridad; combates entre &#39;Los Pachencas&#39; y Clan del Golfo generan 46 familias desplazadas.</span></div>
+<div class="region"><span class="sev sev--alto">Alto</span><span class="nom">Norte de Santander</span><span class="det">Destrucción de depósito ELN con tonelada de explosivos en Sardinata; liberación de ingeniero Ortiz tras 50 días de cautiverio en Ocaña.</span></div>
+<div class="region"><span class="sev sev--alto">Alto</span><span class="nom">Arauca</span><span class="det">Hostigamiento del ELN al Ejército habría dejado 2 soldados muertos y 8 heridos; denuncias no verificadas de constreñimiento electoral.</span></div>
+<div class="region"><span class="sev sev--medio">Medio</span><span class="nom">Tolima</span><span class="det">Arsenal de disidencias hallado en Chaparral; alerta por posible llegada de alias Amazonas; gobernadora denuncia carnetización territorial.</span></div>
+      </div>
+      <div class="panel">
+        <h3>Tendencias · 48 h</h3>
+        <div class="trends">
+          <p class="vacio">Sin línea base aún — las tendencias aparecen tras las primeras ediciones.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="filtros">
+      <button class="fbtn active" data-sev="todos" onclick="filtrar(this)">Todos · 17</button>
+<button class="fbtn" data-sev="critico" onclick="filtrar(this)">Crítico · 1</button>
+<button class="fbtn" data-sev="alto" onclick="filtrar(this)">Alto · 7</button>
+<button class="fbtn" data-sev="medio" onclick="filtrar(this)">Medio · 6</button>
+<button class="fbtn" data-sev="contexto" onclick="filtrar(this)">Contexto · 3</button>
+    </div>
+
+    <div id="lista-incidentes">
+      <div class="inc inc--critico" data-sev="critico"><div class="inc__cab"><span class="sev sev--critico">Crítico</span><span class="tagsec">Logística y transporte</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMihwJBVV95cUxPWWN2M0xHZWlCWHJVNlIyemlfMWltaC1CRUFhTXBCRWV3a1RzN3JZblpXMlMycFlrZlowNXJvMkhKcWlueERhYnBaXzRMdGpRTDBCd05raDhFVzhtbVVWWTAtTnhtc3RFRkFjdXRWWnNiWERCaWJ2VkI3VEpXQjVwTUZkSUtiOUJkT1NoR096U3hIVDQ4dWlqaFpBbEY1ZmgtMlQ2VEc1TmF0a082NDNnZGJiaTE4OWU2dFk3aTNrQmdvQXpSbWNVUGh6VVYwckxkTnU1NE5TSjNuS1BWbjRHazNEdFRTY1czNVVpR2RvTmotWGlNb1JfZk9vbUF6cVNoeHdXQXlLONIBhwJBVV95cUxPWWN2M0xHZWlCWHJVNlIyemlfMWltaC1CRUFhTXBCRWV3a1RzN3JZblpXMlMycFlrZlowNXJvMkhKcWlueERhYnBaXzRMdGpRTDBCd05raDhFVzhtbVVWWTAtTnhtc3RFRkFjdXRWWnNiWERCaWJ2VkI3VEpXQjVwTUZkSUtiOUJkT1NoR096U3hIVDQ4dWlqaFpBbEY1ZmgtMlQ2VEc1TmF0a082NDNnZGJiaTE4OWU2dFk3aTNrQmdvQXpSbWNVUGh6VVYwckxkTnU1NE5TSjNuS1BWbjRHazNEdFRTY1czNVVpR2RvTmotWGlNb1JfZk9vbUF6cVNoeHdXQXlLOA?oc=5">Tras presunto paro armado, autoridades realizan Consejo Extraordinario de Seguridad en Fundación - ELHERALDO.CO</a></div><p class="inc__resumen">Autoridades convocaron Consejo Extraordinario de Seguridad en Fundación ante presunto paro armado anunciado; la situación generó alerta para el comercio y la movilidad en la zona.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMihwJBVV95cUxPWWN2M0xHZWlCWHJVNlIyemlfMWltaC1CRUFhTXBCRWV3a1RzN3JZblpXMlMycFlrZlowNXJvMkhKcWlueERhYnBaXzRMdGpRTDBCd05raDhFVzhtbVVWWTAtTnhtc3RFRkFjdXRWWnNiWERCaWJ2VkI3VEpXQjVwTUZkSUtiOUJkT1NoR096U3hIVDQ4dWlqaFpBbEY1ZmgtMlQ2VEc1TmF0a082NDNnZGJiaTE4OWU2dFk3aTNrQmdvQXpSbWNVUGh6VVYwckxkTnU1NE5TSjNuS1BWbjRHazNEdFRTY1czNVVpR2RvTmotWGlNb1JfZk9vbUF6cVNoeHdXQXlLONIBhwJBVV95cUxPWWN2M0xHZWlCWHJVNlIyemlfMWltaC1CRUFhTXBCRWV3a1RzN3JZblpXMlMycFlrZlowNXJvMkhKcWlueERhYnBaXzRMdGpRTDBCd05raDhFVzhtbVVWWTAtTnhtc3RFRkFjdXRWWnNiWERCaWJ2VkI3VEpXQjVwTUZkSUtiOUJkT1NoR096U3hIVDQ4dWlqaFpBbEY1ZmgtMlQ2VEc1TmF0a082NDNnZGJiaTE4OWU2dFk3aTNrQmdvQXpSbWNVUGh6VVYwckxkTnU1NE5TSjNuS1BWbjRHazNEdFRTY1czNVVpR2RvTmotWGlNb1JfZk9vbUF6cVNoeHdXQXlLOA?oc=5">ELHERALDO.CO</a><span class="loc">2026-06-12 · Fundación, Magdalena</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOeG14OURXU3hESFZLQnNRbmRRN1dqaUJuZ0d1VV9mbDEyemdNNXVlZTJkblVRc1V2TjQwNllCU0syTWdrTjg1RlJPbG5ST2ZwcTJERTZMU2E3UXVEZ01MTnVMTVZ0Si1mclRoek05M1Z6NzJmWWY5SjlfM0ZSNkgtWWtYY1pISS1OVXNmanF3NGhfbTV5bjhycWYySVgyUWZkSVF4NWRSdmQ3MjJCSEHSAcIBQVVfeXFMT09FcUx5dHZxWGpib0Z1bFJjX1BVRWdqZW5YM21ackZROHZ2cTZyYUZWbTNOZmpBcnFCQlZIaTFKNmxHazNaYjhZWDBzdWRIUUtZaHV5YmNHSUpaN2diMDdEMmFCNFRNVDZEMUJNc0lfRXVmOVBxbkFkU1pyMXRtSlJwR0RIUUxZZjROYWRSaDJFYml4Vlkyb0JWQVJmSmViMW9DVmloeHlTekdBZ1MzY1J0RTNmSzUwZUJOeDFrbkdZUUE?oc=5">Nueve muertos deja segundo bombardeo contra el Clan del Golfo en Chocó - El Espectador</a></div><p class="inc__resumen">Bombardeo de la Fuerza Aeroespacial contra un campamento del Clan del Golfo en zona rural de Nuquí dejó presuntamente nueve integrantes dados de baja. Sería el segundo bombardeo contra esa estructura en el período, según fuentes militares.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOeG14OURXU3hESFZLQnNRbmRRN1dqaUJuZ0d1VV9mbDEyemdNNXVlZTJkblVRc1V2TjQwNllCU0syTWdrTjg1RlJPbG5ST2ZwcTJERTZMU2E3UXVEZ01MTnVMTVZ0Si1mclRoek05M1Z6NzJmWWY5SjlfM0ZSNkgtWWtYY1pISS1OVXNmanF3NGhfbTV5bjhycWYySVgyUWZkSVF4NWRSdmQ3MjJCSEHSAcIBQVVfeXFMT09FcUx5dHZxWGpib0Z1bFJjX1BVRWdqZW5YM21ackZROHZ2cTZyYUZWbTNOZmpBcnFCQlZIaTFKNmxHazNaYjhZWDBzdWRIUUtZaHV5YmNHSUpaN2diMDdEMmFCNFRNVDZEMUJNc0lfRXVmOVBxbkFkU1pyMXRtSlJwR0RIUUxZZjROYWRSaDJFYml4Vlkyb0JWQVJmSmViMW9DVmloeHlTekdBZ1MzY1J0RTNmSzUwZUJOeDFrbkdZUUE?oc=5">El Espectador</a><span class="loc">2026-06-12 · Nuquí, Chocó</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">Agro y exportación</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOanRVZnEwNEtvdnJZQVRHeVhpZVpCdXhwN0FFTnV0TGlMeFAwNXBJOVAwM1V5cnlfdkVYNGlYUG9ORHVpZEs1YzZuNFQ4dkdqR2w5QzVSRDlEWnJ4UjJkRWtrd2FjTFY3bjNGTTBncFVKVkRHTXphYjg5aVNpTXpUYlJ3dl9vZW9OQUJZZElfaExfSkpqcjBOWlBocjl4cnFGTWFRNkFPU2hEeDM4andJ?oc=5">Disidencias de las Farc se atribuyeron masacre que sembró la zozobra en el Nordeste de Antioquia - El Colombiano</a></div><p class="inc__resumen">Las disidencias del Frente 4 (EMBF, alias Calarcá) reconocieron y justificaron la masacre de cuatro campesinos en Remedios, alegando que &#39;eran informantes&#39;; la misma estructura anunció más ataques en el Nordeste antioqueño, según versión no verificada de fuentes de prensa.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOanRVZnEwNEtvdnJZQVRHeVhpZVpCdXhwN0FFTnV0TGlMeFAwNXBJOVAwM1V5cnlfdkVYNGlYUG9ORHVpZEs1YzZuNFQ4dkdqR2w5QzVSRDlEWnJ4UjJkRWtrd2FjTFY3bjNGTTBncFVKVkRHTXphYjg5aVNpTXpUYlJ3dl9vZW9OQUJZZElfaExfSkpqcjBOWlBocjl4cnFGTWFRNkFPU2hEeDM4andJ?oc=5">El Colombiano</a><span class="loc">2026-06-11 · Remedios, Antioquia</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNMWhyWHNzOUJvVVJnWHNrNC1sbnZKS0ROM2tWQktDMkxnYVpGWlIwWUF0MG9KNlFKcFloTnY4VGdNWDFHS1E1S1loYi1MMDd5VEVhTTNqcjlLQUxHa0IxR1pwajdzQzlZNXp4YnJDWHJHZTk5YUxzS1ZPNzN3bl8ycjJYSHFXeTI5enU3enpRTUNQWTFfQW1JT3Z3UnJWb3Z5enRtRVdKY3hkQdIBqgFBVV95cUxQT1NPZENheWFLa085N0R5X0dRRWVmdjVYQjd4TThyUS1yVVhuOVVKQVlIaklvRjR6MXJmZmllcnMzVnVXMXIwUldXNWZJQWJ3bTlsNnBtUFlPZzcyT0FLZ05HNnAtTXpfekxVcVFYOGY0RUZlUjNmMWtQM2ZzdzlpNWlNb2R3by1FVFdUY1lHY3Jkc1pJRXhuMGZUTXV0dTVfZW1YSG9La2pRQQ?oc=5">Enfrentamientos con disidencias de las FARC en Nariño dejan seis soldados heridos - La FM</a></div><p class="inc__resumen">Enfrentamientos con disidencias de las FARC en Nariño habrían dejado seis soldados heridos; reportes mencionan también uso de drones en los combates (versión no verificada de forma independiente).</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNMWhyWHNzOUJvVVJnWHNrNC1sbnZKS0ROM2tWQktDMkxnYVpGWlIwWUF0MG9KNlFKcFloTnY4VGdNWDFHS1E1S1loYi1MMDd5VEVhTTNqcjlLQUxHa0IxR1pwajdzQzlZNXp4YnJDWHJHZTk5YUxzS1ZPNzN3bl8ycjJYSHFXeTI5enU3enpRTUNQWTFfQW1JT3Z3UnJWb3Z5enRtRVdKY3hkQdIBqgFBVV95cUxQT1NPZENheWFLa085N0R5X0dRRWVmdjVYQjd4TThyUS1yVVhuOVVKQVlIaklvRjR6MXJmZmllcnMzVnVXMXIwUldXNWZJQWJ3bTlsNnBtUFlPZzcyT0FLZ05HNnAtTXpfekxVcVFYOGY0RUZlUjNmMWtQM2ZzdzlpNWlNb2R3by1FVFdUY1lHY3Jkc1pJRXhuMGZUTXV0dTVfZW1YSG9La2pRQQ?oc=5">La FM</a><span class="loc">2026-06-11 · Nariño</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxOdXRZUkd5X3NIalczdmUwc2VxZUtHZGtJRTZFMXlzeXNLRWZtbjAyQWlzck5XQnV6RzNKMjg2bHJLMlhNcFlOb0doX3k4cWR4ZVhzTXo1OFVNYVF5RkYyanRTc3BfVjA5S3psd21Fc3lzamhRbTQ1U25LM0w2V19yQmlHNHFWS0tTTjY2RWY3ZDlmOHZvSHViTkZGTHotbV9hM2RVcmJhbDlwYWJjVmx4ODlXTWNGNkRoaEw3OFV5ekhGZGhZODlsQ0RwZEhySGNZYU91XzR3S3hLeUtTbVl2RmRRdw?oc=5">Dos soldados muertos y ocho más heridos deja hostigamiento del ELN contra el Ejército en Arauca - Hoy Diario del Magdalena</a></div><p class="inc__resumen">Hostigamiento del ELN contra el Ejército en Arauca habría dejado dos soldados muertos y ocho heridos, según reporte de prensa regional.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxOdXRZUkd5X3NIalczdmUwc2VxZUtHZGtJRTZFMXlzeXNLRWZtbjAyQWlzck5XQnV6RzNKMjg2bHJLMlhNcFlOb0doX3k4cWR4ZVhzTXo1OFVNYVF5RkYyanRTc3BfVjA5S3psd21Fc3lzamhRbTQ1U25LM0w2V19yQmlHNHFWS0tTTjY2RWY3ZDlmOHZvSHViTkZGTHotbV9hM2RVcmJhbDlwYWJjVmx4ODlXTWNGNkRoaEw3OFV5ekhGZGhZODlsQ0RwZEhySGNZYU91XzR3S3hLeUtTbVl2RmRRdw?oc=5">Hoy Diario del Magdalena</a><span class="loc">2026-06-11 · Arauca</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMi7wFBVV95cUxPbDJLUG12YXVTcFlvSjM4QUtGWkNwS1pCWVMweUNqMXBjMl84bEw1YlZzU29kaHFicURWcG5nVVJaOFN3WjJuclV1eWtQVzltMDZrWWU0amhkdnJsVmxmMnpER2JKdGxYd29KOFQ4U2NuV1dDQXdhYklFZ0xCYVFqdkJSMHdfTk94QWVuX241ZHpzU2gwR252bHVyeXNGM2xVdFAtMUJ4NUt3Q2lLOEJOdzN3UmtZLW1sWmxZOE5ueGVsRGkzcHFWYXlyejlKb2FONGJ0azBicU12ZHNxRWNKUW9nMzFFYjY4ZllnZHlENNIB9AFBVV95cUxObXZPU2hyTDZIOVFkX0N1Vm5ZcGxxTmw0TUNRT2lpMUlpOFhvZzBUNGZDSlBYeW4tRk8zUTk4SUZjaWdmM2tPS3lQWFJYM0ZUajdFVGRRbnE2TlZOQVRUaG1KQ3VVbElCaXBuTF9NR05odmhrZFQ4TzE5T3RtTm8wV2lCVGhBYWREOVVobGF6TnZQdjJJaHF2SXlaY2ZyWXhwbDh5bmlRUjEweFdpbzhzY1UtRGdtZV9JemRxb1ZORTFFdXNPMHhKQXl2RlVqX3ZSSkJUT3dFUVJYNWRfUFhtNTZyejhVY1EzUzBOSXNrOGNXTVIx?oc=5">Intensos combates en Los Andes Sotomayor dejan militares heridos y provocan desplazamiento de más de 200 personas - elpais.com.co</a></div><p class="inc__resumen">Combates en Los Andes Sotomayor dejaron militares heridos y provocaron el desplazamiento de más de 200 personas; la situación limita el acceso a la zona.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMi7wFBVV95cUxPbDJLUG12YXVTcFlvSjM4QUtGWkNwS1pCWVMweUNqMXBjMl84bEw1YlZzU29kaHFicURWcG5nVVJaOFN3WjJuclV1eWtQVzltMDZrWWU0amhkdnJsVmxmMnpER2JKdGxYd29KOFQ4U2NuV1dDQXdhYklFZ0xCYVFqdkJSMHdfTk94QWVuX241ZHpzU2gwR252bHVyeXNGM2xVdFAtMUJ4NUt3Q2lLOEJOdzN3UmtZLW1sWmxZOE5ueGVsRGkzcHFWYXlyejlKb2FONGJ0azBicU12ZHNxRWNKUW9nMzFFYjY4ZllnZHlENNIB9AFBVV95cUxObXZPU2hyTDZIOVFkX0N1Vm5ZcGxxTmw0TUNRT2lpMUlpOFhvZzBUNGZDSlBYeW4tRk8zUTk4SUZjaWdmM2tPS3lQWFJYM0ZUajdFVGRRbnE2TlZOQVRUaG1KQ3VVbElCaXBuTF9NR05odmhrZFQ4TzE5T3RtTm8wV2lCVGhBYWREOVVobGF6TnZQdjJJaHF2SXlaY2ZyWXhwbDh5bmlRUjEweFdpbzhzY1UtRGdtZV9JemRxb1ZORTFFdXNPMHhKQXl2RlVqX3ZSSkJUT3dFUVJYNWRfUFhtNTZyejhVY1EzUzBOSXNrOGNXTVIx?oc=5">elpais.com.co</a><span class="loc">2026-06-12 · Los Andes Sotomayor, Nariño</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQVGhQQ0tRb3lxbWdXdjFXZVdzZUxqV0ZBa29oaTl4NEpFemJDZzJmbFlyZy1lTWtjd3UxbDNwcEpWWlZEbEFSWVUtc2pkOWRKODNUS1VHX2Nxc1hqVVFwaVgwaTdHZGNvRDVYZmpiRHZlUG5GbXhaWXd4YmhCY2RvcnlHLWdLMHpfNVhqbHVnVk5hVENRNkdnNG1FaU15MWw1UGRuSzI5cXYxMnBKRU5MZ0RBMEt1MFFGUk5Yem9LRnQ3Y1BtTVE?oc=5">46 familias desplazadas por combates de ‘Los Pachencas’ y el ‘Clan del Golfo’ - Hoy Diario del Magdalena</a></div><p class="inc__resumen">46 familias habrían sido desplazadas por combates entre &#39;Los Pachencas&#39; y el Clan del Golfo en zona del Magdalena, según reporte de prensa local.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQVGhQQ0tRb3lxbWdXdjFXZVdzZUxqV0ZBa29oaTl4NEpFemJDZzJmbFlyZy1lTWtjd3UxbDNwcEpWWlZEbEFSWVUtc2pkOWRKODNUS1VHX2Nxc1hqVVFwaVgwaTdHZGNvRDVYZmpiRHZlUG5GbXhaWXd4YmhCY2RvcnlHLWdLMHpfNVhqbHVnVk5hVENRNkdnNG1FaU15MWw1UGRuSzI5cXYxMnBKRU5MZ0RBMEt1MFFGUk5Yem9LRnQ3Y1BtTVE?oc=5">Hoy Diario del Magdalena</a><span class="loc">2026-06-12 · Magdalena</span></div></div>
+<div class="inc inc--alto" data-sev="alto"><div class="inc__cab"><span class="sev sev--alto">Alto</span><span class="tagsec">Logística y transporte</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPeWxSS2x6X2FsQzVjU2NzZW42WTNialhPR1laWFNaZW9UbWlJUENOaGoyT3FrMnlKUGFkVUpfekNORUZkZ1RZSWxpZGpwamliNk5pYWhvOTF5SWhkbTlLa1lNMWwtbnNTOE1oNDMyVVBVY3dBOC1Jcjd4OWRoWUJjOU5JbWh5VzFNeGplcXZEdllaWndqa0NMcE1yZ0l6TGVpSUp2MTg3SXNZcEViR2NhNmVB0gG3AUFVX3lxTE00LXZvUEQ5b0JDLXRQVFRzcTFGZ1o3OUJmVkFEeHhiUjhIU09vd2ZZWEFNWjVtVGZQbWNjSm45UUt0WkhucmZpYktNMWU1V2lPSU5TRktwWXlYYkVGRTJ6a21mV3NyMHpnRm9VRjZhNC04Y1Jtd2htcWtsajdoVDI4RjFNaXh1NExCcEdiWF9QRzkwbHVVSGdfX3k2U0ZtQnZfWWU2TEc5UG1CZEU3Qi1KTDlOYUlGNA?oc=5">Trágico desenlace en Segovia: hallan sin vida al conductor que había sido secuestrado por el Clan del Golfo | El Colombiano - El Colombiano</a></div><p class="inc__resumen">Hallaron sin vida al conductor que había sido secuestrado por el Clan del Golfo en Segovia; el cuerpo fue encontrado cerca de Remedios, confirmando el homicidio de la víctima.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPeWxSS2x6X2FsQzVjU2NzZW42WTNialhPR1laWFNaZW9UbWlJUENOaGoyT3FrMnlKUGFkVUpfekNORUZkZ1RZSWxpZGpwamliNk5pYWhvOTF5SWhkbTlLa1lNMWwtbnNTOE1oNDMyVVBVY3dBOC1Jcjd4OWRoWUJjOU5JbWh5VzFNeGplcXZEdllaWndqa0NMcE1yZ0l6TGVpSUp2MTg3SXNZcEViR2NhNmVB0gG3AUFVX3lxTE00LXZvUEQ5b0JDLXRQVFRzcTFGZ1o3OUJmVkFEeHhiUjhIU09vd2ZZWEFNWjVtVGZQbWNjSm45UUt0WkhucmZpYktNMWU1V2lPSU5TRktwWXlYYkVGRTJ6a21mV3NyMHpnRm9VRjZhNC04Y1Jtd2htcWtsajdoVDI4RjFNaXh1NExCcEdiWF9QRzkwbHVVSGdfX3k2U0ZtQnZfWWU2TEc5UG1CZEU3Qi1KTDlOYUlGNA?oc=5">El Colombiano</a><span class="loc">2026-06-12 · Segovia, Antioquia</span></div></div>
+<div class="inc inc--medio" data-sev="medio"><div class="inc__cab"><span class="sev sev--medio">Medio</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMiowJBVV95cUxQM05TbVN1T3JCRzhmTWU2SzdvZ0dDd2JGTEdjdlJnbWdMTlUtZ3N1WXgtczFrWnVpaE1Qa0dUN0gtM3VPNzNkTXJ0cDRreHRmYnZxQ0F5Y05ualQ0UlpQTzVDM2dyUHBnalFmVldfVG9ZOXEtQjFXWFg5YmRvM0t3cklVN0pLVl9lbmp1VzZYZ2pnTnZ6cG9mUjE3MjFTc0Flc3U5ZnY1b0wya1VJUTl3d2lzZS1XaDZOMmE5eC12RkpGbEl4YlpwX3hvOUg2TDR6SG1Ya2tIQkRoVFFzMm9fa3ktY3piMDZEaWtuZXF5ZXdxdlNtMU1WVm5oNi1RQkRaZ05MS0otbXN5b25IOGl4VFpqbXk3Tks4eXRiVHBudGRGbEE?oc=5">Alias Chepe o Pichón y alias Marcos o Carlos, presuntos cabecillas del grupo armado Cartel del Clan del Golfo fueron capturados por el Gaula Militar en el Magdalena Medio - Ejército Nacional de Colombia</a></div><p class="inc__resumen">Captura de alias Chepe/Pichón y alias Marcos/Carlos, presuntos cabecillas del Clan del Golfo en el Magdalena Medio, en operación del Gaula Militar; se les atribuyen extorsión y homicidios.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMiowJBVV95cUxQM05TbVN1T3JCRzhmTWU2SzdvZ0dDd2JGTEdjdlJnbWdMTlUtZ3N1WXgtczFrWnVpaE1Qa0dUN0gtM3VPNzNkTXJ0cDRreHRmYnZxQ0F5Y05ualQ0UlpQTzVDM2dyUHBnalFmVldfVG9ZOXEtQjFXWFg5YmRvM0t3cklVN0pLVl9lbmp1VzZYZ2pnTnZ6cG9mUjE3MjFTc0Flc3U5ZnY1b0wya1VJUTl3d2lzZS1XaDZOMmE5eC12RkpGbEl4YlpwX3hvOUg2TDR6SG1Ya2tIQkRoVFFzMm9fa3ktY3piMDZEaWtuZXF5ZXdxdlNtMU1WVm5oNi1RQkRaZ05MS0otbXN5b25IOGl4VFpqbXk3Tks4eXRiVHBudGRGbEE?oc=5">Ejército Nacional de Colombia</a><span class="loc">2026-06-12</span></div></div>
+<div class="inc inc--medio" data-sev="medio"><div class="inc__cab"><span class="sev sev--medio">Medio</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNaWRsTGE1UFB5bktJRkdpUGlMSlFRc3VFSlFuWUNfaTVCeU5lT1hBRHpPdjdmejhMMTNfTXVRV0FMT1pkb3o1MjBwT2ptQXlpWGpmYnd1RXNWaGJNcGhXMWFsbWRMTmF1aDFEQ0tnZ3h0NGRncW53MGduM1did3NRWVd4TEZsRzBSYWJCX09PTi1sUHQ2c21DeTVpd081NWplbElRdTh4a0x1eDJJZlctWEVSYkxaelpEZUFhYnlkdWlleFBXUnlIVWdsTGxjUQ?oc=5">Ejército Nacional destruyó depósito con cerca de una tonelada de explosivos del ELN en Norte de Santander - Ejército Nacional de Colombia</a></div><p class="inc__resumen">El Ejército destruyó un depósito del ELN con cerca de una tonelada de explosivos en Sardinata, Norte de Santander.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNaWRsTGE1UFB5bktJRkdpUGlMSlFRc3VFSlFuWUNfaTVCeU5lT1hBRHpPdjdmejhMMTNfTXVRV0FMT1pkb3o1MjBwT2ptQXlpWGpmYnd1RXNWaGJNcGhXMWFsbWRMTmF1aDFEQ0tnZ3h0NGRncW53MGduM1did3NRWVd4TEZsRzBSYWJCX09PTi1sUHQ2c21DeTVpd081NWplbElRdTh4a0x1eDJJZlctWEVSYkxaelpEZUFhYnlkdWlleFBXUnlIVWdsTGxjUQ?oc=5">Ejército Nacional de Colombia</a><span class="loc">2026-06-12 · Sardinata, Norte de Santander</span></div></div>
+<div class="inc inc--medio" data-sev="medio"><div class="inc__cab"><span class="sev sev--medio">Medio</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdWNRSEJMNDNNaENVRWVnQ3ZBajFPa2ZESS16amFjXzZ4RDdyVS1lTW5jZHZhTmlobnhuSUoxVGdicHVaQm50NDJ3R2Q5bEF0c1g2ODd1d0dkRUIwZFhrNTJjenhiTzB6c1R4UGNPRGhWUUlVV04wblZjLUJGSUgwMHFJQS1QX0xGSnJhMGpLdUVGbzdZRkdydzlHd0tWc002eFJTY0V2UTk5RFRCYnpIWXZaZE12QkxSNl9IaVNsbEFpWmNSWHJLTQ?oc=5">Cayó en Medellín alias Zarco, presunto cabecilla del Clan del Golfo y líder sicarial en El Bagre, Antioquia - Ejército Nacional de Colombia</a></div><p class="inc__resumen">Captura en Medellín de alias Zarco, presunto cabecilla del Clan del Golfo y líder sicarial en El Bagre.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdWNRSEJMNDNNaENVRWVnQ3ZBajFPa2ZESS16amFjXzZ4RDdyVS1lTW5jZHZhTmlobnhuSUoxVGdicHVaQm50NDJ3R2Q5bEF0c1g2ODd1d0dkRUIwZFhrNTJjenhiTzB6c1R4UGNPRGhWUUlVV04wblZjLUJGSUgwMHFJQS1QX0xGSnJhMGpLdUVGbzdZRkdydzlHd0tWc002eFJTY0V2UTk5RFRCYnpIWXZaZE12QkxSNl9IaVNsbEFpWmNSWHJLTQ?oc=5">Ejército Nacional de Colombia</a><span class="loc">2026-06-11 · Medellín, Antioquia</span></div></div>
+<div class="inc inc--medio" data-sev="medio"><div class="inc__cab"><span class="sev sev--medio">Medio</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPMExRS2poQ1FCTHEydDkwWXNGSG5RRjZkSzFCVnNhSnNwZXRuZ1hkQkNkcU1KOUVlQk5jRlAySm5rTXpSN0o5M3Y5NjhKSUlrenhaTjdGNm1wejk2S0tiVWNpVFhMTHRpQ0NZSUNEM1VfSlNLUFN1M3RsWUNKazB1cmVKczVwaHl6NldJMXNqOTZ2VDBJVV9VbE9pYkhjaHlUQzF0RzBhNklwOFlQWDVqRXNtbFp2OWF1SUhNcWxGbkVsM1lKTWpBZ2VQc19mQdIB2wFBVV95cUxPQl9oZ1hJNzZWdExacG1keU1mejU1RkVVQzFaNGYyWUlLc2EwWGdHV1pBZ3EwQ2JMc0JqUlZkcy02Ykp6Y01SRnp3bVBZNUhpaW56cnlVZUFBZnRGb2ZhRXhfbFBCdlBpMW4wc2E5SVpmcGEyb2lYUmV4OGFtNEo4d1ZtaExNWVpFbmNhcllqLTc1RTB4MGVEOEU2TXJOa0JfZnpBdEYzR3JHSDB2SG9Od21lOG5qNzBWZnRiU01jazd1cEEyUk9mczVIZFNoNm9iMUt6Zl9oRDBQdGs?oc=5">A 9 días de elecciones, hallan arsenal de guerra enterrado en Tolima: pertenecía a las disidencias - Blu Radio</a></div><p class="inc__resumen">Ejército halló arsenal enterrado de las disidencias en Tolima, con armas y presuntos recibos de extorsión; alerta por posible llegada de alias Amazonas a esa región.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPMExRS2poQ1FCTHEydDkwWXNGSG5RRjZkSzFCVnNhSnNwZXRuZ1hkQkNkcU1KOUVlQk5jRlAySm5rTXpSN0o5M3Y5NjhKSUlrenhaTjdGNm1wejk2S0tiVWNpVFhMTHRpQ0NZSUNEM1VfSlNLUFN1M3RsWUNKazB1cmVKczVwaHl6NldJMXNqOTZ2VDBJVV9VbE9pYkhjaHlUQzF0RzBhNklwOFlQWDVqRXNtbFp2OWF1SUhNcWxGbkVsM1lKTWpBZ2VQc19mQdIB2wFBVV95cUxPQl9oZ1hJNzZWdExacG1keU1mejU1RkVVQzFaNGYyWUlLc2EwWGdHV1pBZ3EwQ2JMc0JqUlZkcy02Ykp6Y01SRnp3bVBZNUhpaW56cnlVZUFBZnRGb2ZhRXhfbFBCdlBpMW4wc2E5SVpmcGEyb2lYUmV4OGFtNEo4d1ZtaExNWVpFbmNhcllqLTc1RTB4MGVEOEU2TXJOa0JfZnpBdEYzR3JHSDB2SG9Od21lOG5qNzBWZnRiU01jazd1cEEyUk9mczVIZFNoNm9iMUt6Zl9oRDBQdGs?oc=5">Blu Radio</a><span class="loc">2026-06-12 · Tolima</span></div></div>
+<div class="inc inc--medio" data-sev="medio"><div class="inc__cab"><span class="sev sev--medio">Medio</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPLURoUHdWYzBfcWhXcUN5WVFtSmhoM1NQY1NfTDFwTGNwaVZmakZJejFmcnpLd2lodlhDeXNBWXZPU0NXUnJPRlRLRTBXYXVabjVxZHc1RVg0a3JoeXIzTnIwWTZJdkZ0dVc5VGZnN2x2MDh2LU5WY25MSElMTERFeUtCUWJFTWdKd2xEdUtoYmVJLTZPc0NSUnNYX2RGUEQtV2RreU03RkRqR2FVcVZtNXo1dmhDSlcwaVlyQ2pwQXQ5YTI50gHKAUFVX3lxTE1BUGJyVm5zUG1lS2RFaTRoSWNBN2lQcGs5SlhTcnBwdkFHaDJkcmREN0JoSXFhR2Y4WmttNUlqY3BHVXNFY0loUEVZTjlGaTEyajV4SkJYTC0yQ3BKVUtHSk1CUjRaYjdFS1pNeW5GeEtTSUNsbW91OWcwMFFLei1UNW1RaHBnS3JEbmRqT19VZmp1a0xfd2pLMWRIMm1FMElmR1JJWFZEclZraXR4U2l4emJmWldDVUxTMHZiQmRNd3J3MWpxVDBvOWc?oc=5">Ejército desactivó 40 artefactos explosivos sembrados por disidencias en el Cauca - elpais.com.co</a></div><p class="inc__resumen">El Ejército desactivó 40 artefactos explosivos sembrados por disidencias en el Cauca, reduciendo presuntamente el riesgo inmediato en vías y zonas rurales.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxPLURoUHdWYzBfcWhXcUN5WVFtSmhoM1NQY1NfTDFwTGNwaVZmakZJejFmcnpLd2lodlhDeXNBWXZPU0NXUnJPRlRLRTBXYXVabjVxZHc1RVg0a3JoeXIzTnIwWTZJdkZ0dVc5VGZnN2x2MDh2LU5WY25MSElMTERFeUtCUWJFTWdKd2xEdUtoYmVJLTZPc0NSUnNYX2RGUEQtV2RreU03RkRqR2FVcVZtNXo1dmhDSlcwaVlyQ2pwQXQ5YTI50gHKAUFVX3lxTE1BUGJyVm5zUG1lS2RFaTRoSWNBN2lQcGs5SlhTcnBwdkFHaDJkcmREN0JoSXFhR2Y4WmttNUlqY3BHVXNFY0loUEVZTjlGaTEyajV4SkJYTC0yQ3BKVUtHSk1CUjRaYjdFS1pNeW5GeEtTSUNsbW91OWcwMFFLei1UNW1RaHBnS3JEbmRqT19VZmp1a0xfd2pLMWRIMm1FMElmR1JJWFZEclZraXR4U2l4emJmWldDVUxTMHZiQmRNd3J3MWpxVDBvOWc?oc=5">elpais.com.co</a><span class="loc">2026-06-12 · Cauca</span></div></div>
+<div class="inc inc--medio" data-sev="medio"><div class="inc__cab"><span class="sev sev--medio">Medio</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxPOExBU0FtUVhIOEQwR0U0dmFPMDZpVE9fUnRVT2pSRTU4eV9sZ3dTMUtYVEx6YjluTVBxUlAyUElRRWw5T3dyU0FxRWFiYUNBa2dqVDh1YkxndG40cEg5QmRDeEs1YVdsQXhmV3VtTDJMbldqb2I2UGVzNGw2RnRKSGxHNzBzU20xTlMyZzB4UTdJSm55T0N1Q1ZRYVo4UHhPcTdyQXdrVUNyNUpURFA1eC1udW9GMmRjOE5qb3l3dFVCSGNCRnIxSjkxdDFET0xjZkUxc3hzVTlkT0oz0gHiAUFVX3lxTE95cHZCeXhfNG5wb0lfZl84dVlKeGxzVERBMGN0bzFOci1GX3Q4TFZ1TGh3X1R1Ym1VR2lfYWgxWC1OamN6aTNwdmZOakJRRUxrVmRfMzdsZk4zRmFaeU9YWDV6ZEVDMlZ0ZHhBSmJPUVdPNFdPcEc5eF9KWkswNGUzQ05wOVJmZ2ZtWUQxeUxwQjB3WHVKVDM1V0lOV2RrdVN1QlY0UktIREJKV0tYVWlUdjFHZlpwSWpBX0tlYVJjeU1pNTR1dEQ0WGgwNDI0RkFRLWlJc2ZNNUxUUnRvSDBuM2c?oc=5">Colombia desmantela red que traficaba armas de Estados Unidos para abastecer al Clan del Golfo - El Economista</a></div><p class="inc__resumen">Desmantelamiento de red de tráfico de armas desde Estados Unidos que habría abastecido al Clan del Golfo; operativo de alcance nacional con implicaciones logísticas para el grupo armado.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxPOExBU0FtUVhIOEQwR0U0dmFPMDZpVE9fUnRVT2pSRTU4eV9sZ3dTMUtYVEx6YjluTVBxUlAyUElRRWw5T3dyU0FxRWFiYUNBa2dqVDh1YkxndG40cEg5QmRDeEs1YVdsQXhmV3VtTDJMbldqb2I2UGVzNGw2RnRKSGxHNzBzU20xTlMyZzB4UTdJSm55T0N1Q1ZRYVo4UHhPcTdyQXdrVUNyNUpURFA1eC1udW9GMmRjOE5qb3l3dFVCSGNCRnIxSjkxdDFET0xjZkUxc3hzVTlkT0oz0gHiAUFVX3lxTE95cHZCeXhfNG5wb0lfZl84dVlKeGxzVERBMGN0bzFOci1GX3Q4TFZ1TGh3X1R1Ym1VR2lfYWgxWC1OamN6aTNwdmZOakJRRUxrVmRfMzdsZk4zRmFaeU9YWDV6ZEVDMlZ0ZHhBSmJPUVdPNFdPcEc5eF9KWkswNGUzQ05wOVJmZ2ZtWUQxeUxwQjB3WHVKVDM1V0lOV2RrdVN1QlY0UktIREJKV0tYVWlUdjFHZlpwSWpBX0tlYVJjeU1pNTR1dEQ0WGgwNDI0RkFRLWlJc2ZNNUxUUnRvSDBuM2c?oc=5">El Economista</a><span class="loc">2026-06-12</span></div></div>
+<div class="inc inc--contexto" data-sev="contexto"><div class="inc__cab"><span class="sev sev--info">Contexto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxPN3FVODRWWFpzNWJnd2s2a0ZUeGw1c080ZHh3NS1IcWNjVF94Q0R5emw3Tlo3QjlLa1JNeFdrX0hvU1Z6aUhYMUhmMTBvb1hFdldmZVBiSGI0bjZZbUE5MUpGQ2VQcjA4TC1aenUxcTdhWVFkS0lXQXVBVWtwSlh5UEJGUVVCOGZqaUJxVHZMQ25rNXFDX2x0aHlEblhxSXU0Z2luNFEzREVIWHQ2OHFiZl9CR29zM3hFZ0c3U2JlRTZpQmVZMVNqYUREVGVQSG5zbzdYVGV6cTIzVnZQUV84Z3hIcnRIWkd0X0hfdHB30gGIAkFVX3lxTFBtVFZfZ0dVTUo3OWoxV3dPY1NhOFFFU09EZnVubXJ6MXdJZHJlRmxrNkIzRjZFdXRzQXJ6RGlpUm1zNGZrM0hXNlNrYWlrajd3UG5iZENBckVwVUYxbUpfR292UFhENnQwZnN0OWRJZy1zWm9qazNGcG1hUTdsNDk0WDdSX1h1ejlxV3hvWmVmc3psVnNsd2tJd1YxVjFGVzlLa3loay1YSUFJRTR6NWotWXF3Q00yQ1Nsa2dZdm9GN2k0ZXN5Q1Nlc0NNdzh1dlJLYTNsbmp2V0xGc0xKaEdYYXdWTENPQ2Q5SjAtbnNTSjhhU0VsbFBONE53Zzg3V0hNTkZyWFpKQg?oc=5">Denuncian que guerrilleros de las disidencias estarían capacitándose en manejo de explosivos y drones en Ucrania - Infobae</a></div><p class="inc__resumen">Alertas de inteligencia señalan que guerrilleros del ELN y disidencias habrían viajado a Ucrania para capacitarse en manejo de explosivos y drones; versión no verificada, reportada por varios medios.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxPN3FVODRWWFpzNWJnd2s2a0ZUeGw1c080ZHh3NS1IcWNjVF94Q0R5emw3Tlo3QjlLa1JNeFdrX0hvU1Z6aUhYMUhmMTBvb1hFdldmZVBiSGI0bjZZbUE5MUpGQ2VQcjA4TC1aenUxcTdhWVFkS0lXQXVBVWtwSlh5UEJGUVVCOGZqaUJxVHZMQ25rNXFDX2x0aHlEblhxSXU0Z2luNFEzREVIWHQ2OHFiZl9CR29zM3hFZ0c3U2JlRTZpQmVZMVNqYUREVGVQSG5zbzdYVGV6cTIzVnZQUV84Z3hIcnRIWkd0X0hfdHB30gGIAkFVX3lxTFBtVFZfZ0dVTUo3OWoxV3dPY1NhOFFFU09EZnVubXJ6MXdJZHJlRmxrNkIzRjZFdXRzQXJ6RGlpUm1zNGZrM0hXNlNrYWlrajd3UG5iZENBckVwVUYxbUpfR292UFhENnQwZnN0OWRJZy1zWm9qazNGcG1hUTdsNDk0WDdSX1h1ejlxV3hvWmVmc3psVnNsd2tJd1YxVjFGVzlLa3loay1YSUFJRTR6NWotWXF3Q00yQ1Nsa2dZdm9GN2k0ZXN5Q1Nlc0NNdzh1dlJLYTNsbmp2V0xGc0xKaEdYYXdWTENPQ2Q5SjAtbnNTSjhhU0VsbFBONE53Zzg3V0hNTkZyWFpKQg?oc=5">Infobae</a><span class="loc">2026-06-12</span></div></div>
+<div class="inc inc--contexto" data-sev="contexto"><div class="inc__cab"><span class="sev sev--info">Contexto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQWm5RMnl6UUIxTDhIZ1B3TVQxS0tDQUtZeHByOGlZMnc1TEFVbHpuWmlRLTZPRlpsMFViMUxTbUY4SEMtbFB1ZG00a25sZkpFSFI0MTM3bnNOSmY4WW9FOWVSenJITU5zZ2VfTTRxVkRZMTdNeDE4Tk1xV3Y2WGFPd1dhX0RneTdyTkhGRTlFNy0wRm9yZlpnOUhqYWxaa2haSU5CVzItR0p0R3R3OElV0gG0AUFVX3lxTFBKWlppdUdHczQ1VTdOX1FaZTBsbXdUMXFiVUVrOWJILUU0NHpJdHhYVm51OWhaekJEclY1YWY3R1BVbnBidFBsM3VaaF8zM1NxSThrWS1LNHlucllrQnZ4NThUclJ3dm1BeWNvVF9SUFZ4WHVtdVB2aFJOWGFEa1paeWl5ajBqeDM4TlFWa19OTFMzVHRvYktyZThubzFKRGRpLWRuUk9LcmctUF9wT1Rza3diNw?oc=5">Más de 8.000 personas desplazadas y 258 masacradas en 2026: el grave panorama de DD.HH. en Colombia | El Colombiano - El Colombiano</a></div><p class="inc__resumen">Balance de derechos humanos en Colombia registra más de 8.000 personas desplazadas y 258 masacradas en lo corrido de 2026, según informe de prensa.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQWm5RMnl6UUIxTDhIZ1B3TVQxS0tDQUtZeHByOGlZMnc1TEFVbHpuWmlRLTZPRlpsMFViMUxTbUY4SEMtbFB1ZG00a25sZkpFSFI0MTM3bnNOSmY4WW9FOWVSenJITU5zZ2VfTTRxVkRZMTdNeDE4Tk1xV3Y2WGFPd1dhX0RneTdyTkhGRTlFNy0wRm9yZlpnOUhqYWxaa2haSU5CVzItR0p0R3R3OElV0gG0AUFVX3lxTFBKWlppdUdHczQ1VTdOX1FaZTBsbXdUMXFiVUVrOWJILUU0NHpJdHhYVm51OWhaekJEclY1YWY3R1BVbnBidFBsM3VaaF8zM1NxSThrWS1LNHlucllrQnZ4NThUclJ3dm1BeWNvVF9SUFZ4WHVtdVB2aFJOWGFEa1paeWl5ajBqeDM4TlFWa19OTFMzVHRvYktyZThubzFKRGRpLWRuUk9LcmctUF9wT1Rza3diNw?oc=5">El Colombiano</a><span class="loc">2026-06-12</span></div></div>
+<div class="inc inc--contexto" data-sev="contexto"><div class="inc__cab"><span class="sev sev--info">Contexto</span><span class="tagsec">General</span></div><div class="inc__titular"><a href="https://news.google.com/rss/articles/CBMi5wJBVV95cUxPcnFCQkxCZ3hLRWJVdW1CNm9nZXZLV2VfT0lzOEVwdVB3Z2R1YURNWkJhQkVGdGZVaFVYZUhVMzZvVzVxTWMxUTc3NF9hdy1UTHBPLXdLdkZVdEJiSTFkSlNwNHdnU3pRd1k5dEpBUXFUZi1seDFUVVFtaWhPLWdwWmxTNUV6RGxjdjdFeXhnOW5wQm9vRHdxRm56ZGg3OVY2dDJJRFppV042NTNvaDU1ajJGcG1EamlIZngzZVRKU19JVHJjUjdCcWozdEUxRldUX2Vib1UydlZwc04wa1RSUy03dGhINDBZWkZQNWNPaTdpNjIwN1FDRHczUHJqM3VOYXBFV0N5ZzhGMEFTbkFqRUNFc05ad0lPMVdQeXh3eGxTS3lKUjJWbjZJc2pKcFlkUVN4WG9jUkZNMno0Y19lR1pVeU5HYVh4cF93TlAzdzRDTlVpMzk1c0ZzSjl5dlVrdUs3NTZPSQ?oc=5">“La carnetización de las disidencias, que hemos denunciado desde el año 2024, no es otra cosa que la mutación de la violencia”: gobernadora del Tolima - Gobernación del Tolima</a></div><p class="inc__resumen">La gobernadora del Tolima advirtió sobre la &#39;carnetización&#39; de las disidencias como forma de mutación de la violencia y control territorial; denuncia desde 2024.</p><div class="inc__meta"><a class="fuente" href="https://news.google.com/rss/articles/CBMi5wJBVV95cUxPcnFCQkxCZ3hLRWJVdW1CNm9nZXZLV2VfT0lzOEVwdVB3Z2R1YURNWkJhQkVGdGZVaFVYZUhVMzZvVzVxTWMxUTc3NF9hdy1UTHBPLXdLdkZVdEJiSTFkSlNwNHdnU3pRd1k5dEpBUXFUZi1seDFUVVFtaWhPLWdwWmxTNUV6RGxjdjdFeXhnOW5wQm9vRHdxRm56ZGg3OVY2dDJJRFppV042NTNvaDU1ajJGcG1EamlIZngzZVRKU19JVHJjUjdCcWozdEUxRldUX2Vib1UydlZwc04wa1RSUy03dGhINDBZWkZQNWNPaTdpNjIwN1FDRHczUHJqM3VOYXBFV0N5ZzhGMEFTbkFqRUNFc05ad0lPMVdQeXh3eGxTS3lKUjJWbjZJc2pKcFlkUVN4WG9jUkZNMno0Y19lR1pVeU5HYVh4cF93TlAzdzRDTlVpMzk1c0ZzSjl5dlVrdUs3NTZPSQ?oc=5">Gobernación del Tolima</a><span class="loc">2026-06-12 · Tolima</span></div></div>
+    </div>
+
+    <button class="descartados-toggle" id="desc-btn" onclick="toggleDescartados()">▸ 8 hechos descartados por filtro de relevancia — ver</button><div id="descartados"><div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">Fiscalía pidió medida de aseguramiento para Blessd: jueza levantó audiencia y anunciará decisión este día | El Colombiano - El Colombiano</div><div class="inc__meta"><span class="loc">Caso Blessd: hecho judicial de farándula, no seguridad corporativa</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">Día 20: crónica del secuestro de las y los voluntarios de la misión humanitaria a Gaza - NODAL - Noticias de América Latina y el Caribe</div><div class="inc__meta"><span class="loc">Secuestro en Gaza, fuera del ámbito Colombia</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">Fiscalía de Perú pide 35 años de cárcel por secuestro y extorsión para “El Monstruo”, líder de Los Injertos del Cono Norte - La Tercera</div><div class="inc__meta"><span class="loc">Caso penal en Perú, irrelevante para clientes Colombia</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">Las maras de Guatemala cambian la extorsión por el control y el dinero del narcotráfico - LatinAmerican Post</div><div class="inc__meta"><span class="loc">Maras Guatemala, contexto regional sin aplicación local</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">9 de junio: 72 años de la masacre de 11 estudiantes universitarios durante una protesta en Bogotá - Centro Nacional de Memoria Histórica</div><div class="inc__meta"><span class="loc">Conmemoración histórica, sin valor operativo</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">Video policial muestra arresto en caso de tráfico de personas que podrían enfrentar cadena perpetua - Telemundo Miami (51)</div><div class="inc__meta"><span class="loc">Tráfico de personas Miami, sin relación Colombia</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">Este domingo, en laSexta, ‘Anatomía de…’ reconstruye el secuestro del padre de Julio Iglesias y las claves de su rescate de película - Atresmedia</div><div class="inc__meta"><span class="loc">Programa televisivo, contenido de entretenimiento</span></div></div>
+<div class="inc inc--off"><div class="inc__cab"><span class="sev sev--off">Descartado</span></div><div class="inc__titular">McLaren vuelve a romper el toque de queda, ahora relacionado con el motor - Motorsport.com España</div><div class="inc__meta"><span class="loc">Nota de automovilismo deportivo, sin relación con seguridad</span></div></div></div>
+
+    <div class="seccion">
+      <h2 class="seclbl">Recomendaciones para clientes</h2>
+      <div class="recogrid">
+        <div class="reco"><b>Logística y transporte · Magdalena</b>Evaluar cierre preventivo de operaciones en Fundación durante 24-48 horas ante el presunto paro armado anunciado; reprogramar rutas de distribución por corredores alternos y confirmar reapertura con coordinación con autoridades locales antes de reanudar tránsito.</div>
+<div class="reco"><b>Agro y exportación · Antioquia (Nordeste)</b>Suspender temporalmente visitas de campo y transporte de cosecha en municipios de Remedios, Segovia y alrededores ante la declaración de más ataques por parte de las disidencias; activar protocolos de comunicación segura para personal rural.</div>
+<div class="reco"><b>Minería y energía · Nariño</b>Restringir movimiento de personal y equipos en áreas rurales de Los Andes Sotomayor y municipios aledaños mientras persistan combates activos; verificar estado de vías con fuentes oficiales antes de cualquier desplazamiento operativo.</div>
+<div class="reco"><b>Logística y transporte · Norte de Santander</b>Reforzar protocolos anti-extorsión y verificación de rutas en el corredor de Ocaña-Catatumbo ante la confirmación de capacidades explosivas del ELN en Sardinata; considerar escoltas para cargas de alto valor.</div>
+<div class="reco"><b>Retail y comercio · Bogotá</b>Alertar a puntos de venta y personal de seguridad en el norte de Bogotá (Usaquén) sobre el incremento de ataques sicariales; revisar protocolos de cierre nocturno y reporte de actividades sospechosas en inmediaciones de estaciones de TransMilenio.</div>
+<div class="reco"><b>General · Caquetá / Antioquia / Arauca</b>Con la segunda vuelta electoral próxima, activar protocolos de seguridad para empleados en zonas con denuncias de constreñimiento armado; evitar que personal de campo sea instrumentalizado o intimidado; mantener líneas de reporte confidencial activas.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="pie">
+    <div class="pie__inner">
+      <span><b>ALTO</b> · Boletín de Seguridad Colombia</span>
+      <span class="tag">viernes 12 de junio de 2026 · Uso interno</span>
+    </div>
+  </footer>
+
+  <script>
+    function filtrar(btn) {
+      var sev = btn.getAttribute('data-sev');
+      var botones = document.querySelectorAll('.fbtn');
+      for (var i = 0; i < botones.length; i++) botones[i].classList.remove('active');
+      btn.classList.add('active');
+      var incs = document.querySelectorAll('#lista-incidentes .inc');
+      for (var j = 0; j < incs.length; j++) {
+        incs[j].style.display = (sev === 'todos' || incs[j].getAttribute('data-sev') === sev) ? '' : 'none';
+      }
+    }
+    function toggleDescartados() {
+      var el = document.getElementById('descartados');
+      var btn = document.getElementById('desc-btn');
+      var visible = el.style.display === 'block';
+      el.style.display = visible ? 'none' : 'block';
+      btn.textContent = (visible ? '▸' : '▾') + btn.textContent.slice(1);
+    }
+  </script>
+
+</body>
+</html>
