@@ -37,7 +37,7 @@ var TEMAS_POR_DEFECTO = [
   ['Desplazamiento',        'desplazamiento forzado, confinamiento, familias desplazadas, toque de queda'],
   ['Narcotráfico',          'incautación de cocaína, laboratorio de cocaína, cargamento de droga, narcotráfico operación'],
   ['Seguridad urbana',      'fleteo, sicariato, paseo millonario, banda delincuencial desarticulada'],
-  ['Fuerza pública',        'Ejército Nacional operación, militares heridos, soldados heridos combates, Policía captura cabecilla'],
+  ['Fuerza pública',        'operación militar, militares heridos, soldados heridos, captura de cabecilla, neutralizados'],
   ['Sectores productivos',  'extorsión comerciantes, extorsión ganaderos, bloqueo de vía, minería ilegal, atentado oleoducto']
 ];
 
