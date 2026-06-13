@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Archivo · ALTO · Boletín de Seguridad Colombia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#15181D; --ink-2:#4A4F57; --ink-3:#7C828B; --red:#E84244; --grey:#B0B6B8; --line:rgba(21,24,29,.12); }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#fff; color:var(--ink); font-family:"IBM Plex Sans",Arial,sans-serif; font-size:16px; line-height:1.5; }
+    .band { background:var(--ink); color:#fff; }
+    .band__inner { max-width:1000px; margin:0 auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .band__logo { background:#fff; border-radius:4px; padding:10px 16px; display:inline-flex; }
+    .band__logo img { height:28px; width:auto; display:block; }
+    .band__meta { text-align:right; font-size:10px; letter-spacing:.16em; text-transform:uppercase; line-height:1.8; }
+    .band__meta b { font-weight:600; }
+    .nav { max-width:1000px; margin:0 auto; padding:12px 40px; display:flex; gap:24px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+    .nav a { text-decoration:none; font-weight:600; color:var(--ink); }
+    .nav a:hover { color:var(--red); }
+    .hero { max-width:1000px; margin:0 auto; padding:30px 40px 8px; border-top:1.5px solid var(--ink); }
+    .kick { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--red); margin:0 0 16px; font-weight:600; }
+    .hero h1 { font-family:Archivo,Arial,sans-serif; font-weight:800; font-size:clamp(28px,5vw,44px); margin:0; letter-spacing:-.02em; }
+    .diario { max-width:1000px; margin:0 auto; padding:0 40px 8px; }
+    .archivo-lista { list-style:none; padding:0; margin:20px 0 0; }
+    .archivo-item { border-bottom:1px solid var(--line); padding:16px 0; display:flex; align-items:baseline; gap:18px; }
+    .archivo-item__fecha { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--red); font-weight:600; white-space:nowrap; min-width:116px; }
+    .archivo-item__titulo { font-family:Archivo,Arial,sans-serif; font-size:19px; font-weight:700; line-height:1.2; }
+    .archivo-item__titulo a { color:var(--ink); text-decoration:none; }
+    .archivo-item__titulo a:hover { color:var(--red); }
+    .archivo-vacio { color:var(--ink-3); font-style:italic; padding:28px 0; }
+    .pie { background:var(--ink); color:#fff; margin-top:38px; }
+    .pie__inner { max-width:1000px; margin:0 auto; padding:16px 40px; display:flex; justify-content:space-between; font-size:10px; letter-spacing:.14em; text-transform:uppercase; }
+    .pie__inner .tag { color:var(--grey); }
+    .pie__inner b { color:var(--red); font-weight:600; }
+  </style>
+</head>
+<body>
+
+  <header class="band">
+    <div class="band__inner">
+      <span class="band__logo"><img src="assets/alto-logo.png" alt="ALTO"></span>
+      <div class="band__meta">
+        Boletín de Seguridad · Colombia<br>
+        <b>Archivo de boletines</b>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="index.html">Boletín de hoy</a>
+    <a href="archivo.html">Archivo</a>
+  </nav>
+
+  <main class="hero">
+    <p class="kick">Archivo</p>
+    <h1>Boletines publicados</h1>
+  </main>
+
+  <div class="diario">
+    <ul class="archivo-lista" id="lista">
+      <li class="archivo-vacio">Cargando boletines…</li>
+    </ul>
+  </div>
+
+  <footer class="pie">
+    <div class="pie__inner">
+      <span><b>ALTO</b> · Boletín de Seguridad Colombia</span>
+      <span class="tag">Uso interno · America/Bogota</span>
+    </div>
+  </footer>
+
+  <script>
+    // Lee el manifiesto append-only y lista el histórico, de más nuevo a más antiguo.
+    (function () {
+      var lista = document.getElementById('lista');
+      function vacio(msg) { lista.innerHTML = '<li class="archivo-vacio">' + msg + '</li>'; }
+
+      fetch('ediciones/indice.json', { cache: 'no-store' })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (ediciones) {
+          if (!Array.isArray(ediciones) || ediciones.length === 0) {
+            vacio('Todavía no hay boletines en el archivo.'); return;
+          }
+          ediciones.sort(function (a, b) { return (b.fecha || '').localeCompare(a.fecha || ''); });
+          lista.innerHTML = '';
+          ediciones.forEach(function (ed) {
+            var li = document.createElement('li');
+            li.className = 'archivo-item';
+            var fecha = document.createElement('span');
+            fecha.className = 'archivo-item__fecha';
+            fecha.textContent = ed.fecha || '';
+            var titulo = document.createElement('span');
+            titulo.className = 'archivo-item__titulo';
+            var a = document.createElement('a');
+            a.href = ed.archivo || ('ediciones/' + ed.fecha + '.html');
+            a.textContent = ed.titulo || ('Boletín del ' + ed.fecha);
+            titulo.appendChild(a);
+            li.appendChild(fecha);
+            li.appendChild(titulo);
+            lista.appendChild(li);
+          });
+        })
+        .catch(function () { vacio('No se pudo cargar el archivo todavía.'); });
+    })();
+  </script>
+
+</body>
+</html>

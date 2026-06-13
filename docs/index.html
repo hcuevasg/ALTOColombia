@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALTO · Boletín de Seguridad Colombia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#15181D; --ink-2:#4A4F57; --red:#E84244; --grey:#B0B6B8; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#fff; color:var(--ink); font-family:"IBM Plex Sans",Arial,sans-serif; }
+    .band { background:var(--ink); color:#fff; }
+    .band__inner { max-width:1000px; margin:0 auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .band__logo { background:#fff; border-radius:4px; padding:10px 16px; display:inline-flex; }
+    .band__logo img { height:28px; width:auto; display:block; }
+    .band__meta { text-align:right; font-family:"IBM Plex Sans",Arial,sans-serif; font-size:10px; letter-spacing:.16em; text-transform:uppercase; line-height:1.8; }
+    .placeholder { max-width:1000px; margin:0 auto; padding:80px 40px; text-align:center; }
+    .placeholder h2 { font-family:Archivo,Arial,sans-serif; font-weight:800; font-size:30px; margin:0 0 12px; }
+    .placeholder p { color:var(--ink-2); max-width:520px; margin:0 auto 8px; line-height:1.5; }
+    .pie { background:var(--ink); color:#fff; position:fixed; bottom:0; left:0; right:0; }
+    .pie__inner { max-width:1000px; margin:0 auto; padding:16px 40px; display:flex; justify-content:space-between; font-size:10px; letter-spacing:.14em; text-transform:uppercase; }
+    .pie__inner .tag { color:var(--grey); }
+    .pie__inner b { color:var(--red); font-weight:600; }
+  </style>
+</head>
+<body>
+  <header class="band">
+    <div class="band__inner">
+      <span class="band__logo"><img src="assets/alto-logo.png" alt="ALTO"></span>
+      <div class="band__meta">Boletín de Seguridad · Colombia<br><b>Tablero de Inteligencia</b></div>
+    </div>
+  </header>
+  <main class="placeholder">
+    <h2>Primera edición pendiente</h2>
+    <p>El boletín diario se publica automáticamente cada mañana en esta página.</p>
+    <p>Cuando el pipeline corra por primera vez, esta portada será reemplazada por el tablero del día.</p>
+  </main>
+  <footer class="pie">
+    <div class="pie__inner">
+      <span><b>ALTO</b> · Boletín de Seguridad Colombia</span>
+      <span class="tag">Uso interno</span>
+    </div>
+  </footer>
+</body>
+</html>
